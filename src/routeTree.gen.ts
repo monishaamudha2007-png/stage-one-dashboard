@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AnalyseMessageRouteImport } from './routes/analyse-message'
+import { Route as IncidentResponseRouteImport } from './routes/incident-response'
+import { Route as ScamAwarenessRouteImport } from './routes/scam-awareness'
+import { Route as ScanHistoryRouteImport } from './routes/scan-history'
+import { Route as ScanLinkRouteImport } from './routes/scan-link'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalyseMessageRoute = AnalyseMessageRouteImport.update({
+  id: '/analyse-message',
+  path: '/analyse-message',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IncidentResponseRoute = IncidentResponseRouteImport.update({
+  id: '/incident-response',
+  path: '/incident-response',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScamAwarenessRoute = ScamAwarenessRouteImport.update({
+  id: '/scam-awareness',
+  path: '/scam-awareness',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScanHistoryRoute = ScanHistoryRouteImport.update({
+  id: '/scan-history',
+  path: '/scan-history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScanLinkRoute = ScanLinkRouteImport.update({
+  id: '/scan-link',
+  path: '/scan-link',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/analyse-message': typeof AnalyseMessageRoute
+  '/incident-response': typeof IncidentResponseRoute
+  '/scam-awareness': typeof ScamAwarenessRoute
+  '/scan-history': typeof ScanHistoryRoute
+  '/scan-link': typeof ScanLinkRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/analyse-message': typeof AnalyseMessageRoute
+  '/incident-response': typeof IncidentResponseRoute
+  '/scam-awareness': typeof ScamAwarenessRoute
+  '/scan-history': typeof ScanHistoryRoute
+  '/scan-link': typeof ScanLinkRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/analyse-message': typeof AnalyseMessageRoute
+  '/incident-response': typeof IncidentResponseRoute
+  '/scam-awareness': typeof ScamAwarenessRoute
+  '/scan-history': typeof ScanHistoryRoute
+  '/scan-link': typeof ScanLinkRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/analyse-message'
+    | '/incident-response'
+    | '/scam-awareness'
+    | '/scan-history'
+    | '/scan-link'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/analyse-message'
+    | '/incident-response'
+    | '/scam-awareness'
+    | '/scan-history'
+    | '/scan-link'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/analyse-message'
+    | '/incident-response'
+    | '/scam-awareness'
+    | '/scan-history'
+    | '/scan-link'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AnalyseMessageRoute: typeof AnalyseMessageRoute
+  IncidentResponseRoute: typeof IncidentResponseRoute
+  ScamAwarenessRoute: typeof ScamAwarenessRoute
+  ScanHistoryRoute: typeof ScanHistoryRoute
+  ScanLinkRoute: typeof ScanLinkRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analyse-message': {
+      id: '/analyse-message'
+      path: '/analyse-message'
+      fullPath: '/analyse-message'
+      preLoaderRoute: typeof AnalyseMessageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/incident-response': {
+      id: '/incident-response'
+      path: '/incident-response'
+      fullPath: '/incident-response'
+      preLoaderRoute: typeof IncidentResponseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scam-awareness': {
+      id: '/scam-awareness'
+      path: '/scam-awareness'
+      fullPath: '/scam-awareness'
+      preLoaderRoute: typeof ScamAwarenessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scan-history': {
+      id: '/scan-history'
+      path: '/scan-history'
+      fullPath: '/scan-history'
+      preLoaderRoute: typeof ScanHistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scan-link': {
+      id: '/scan-link'
+      path: '/scan-link'
+      fullPath: '/scan-link'
+      preLoaderRoute: typeof ScanLinkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AnalyseMessageRoute: AnalyseMessageRoute,
+  IncidentResponseRoute: IncidentResponseRoute,
+  ScamAwarenessRoute: ScamAwarenessRoute,
+  ScanHistoryRoute: ScanHistoryRoute,
+  ScanLinkRoute: ScanLinkRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
