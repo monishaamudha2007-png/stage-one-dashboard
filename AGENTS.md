@@ -28,3 +28,4 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+- All backend calls go through src/services/api.ts (VITE_API_BASE_URL, 15s timeout, typed ApiError); pages never call fetch directly — keeps the Flask contract in one place.
