@@ -82,3 +82,16 @@ export const analyzeUrl = (url: string) =>
 
 export const analyzeMessage = (message: string, channel: Channel) =>
   request<MessageAnalysis>("/api/analyze-message", { method: "POST", body: JSON.stringify({ message, channel }) });
+
+export interface HistoryItem {
+  id: string;
+  type: "url" | "message";
+  created_at: string;
+  input_preview: string;
+  risk_level: RiskLevel;
+}
+export type HistoryDetail = (UrlAnalysis | MessageAnalysis) & { id: string; created_at: string };
+
+export const getScanHistory = () => request<{ items: HistoryItem[] }>("/api/scan-history");
+export const getScanDetail = (id: string) =>
+  request<HistoryDetail>(`/api/scan-history/${encodeURIComponent(id)}`);
